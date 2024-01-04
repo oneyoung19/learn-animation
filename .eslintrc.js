@@ -1,17 +1,17 @@
+const { lintExtends, lintRules } =
+	require('@cbibank/vue-cli-plugin-format/lib/lintConfig')('prettier')
+
 module.exports = {
-  root: true,
-  env: {
-    node: true
-  },
-  extends: [
-    'plugin:vue/essential',
-    '@vue/standard'
-  ],
-  parserOptions: {
-    parser: 'babel-eslint'
-  },
-  rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off'
-  }
+	root: true,
+	env: {
+		node: true
+	},
+	extends: [...lintExtends],
+	parserOptions: {
+		// @babel/eslint-parser can transform new grammar better than default espree
+		parser: '@babel/eslint-parser'
+	},
+	rules: {
+		...lintRules
+	}
 }
