@@ -3,21 +3,24 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-		"start": "vue-cli-service serve",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "format": "npm run format:lint && npm run format:pretty",
     "format:lint": "vue-cli-service format:lint",
-    "format:pretty": "prettier . --write"
+    "format:pretty": "prettier . --write",
+    "start": "vue-cli-service serve"
   },
   "dependencies": {
+    "babel-runtime": "^6.26.0",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
+    "vue-markdown": "^2.2.4",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"
   },
   "devDependencies": {
+    "@cbibank/vue-cli-plugin-format": "~1.1.0",
     "@vue/cli-plugin-babel": "~4.5.15",
     "@vue/cli-plugin-eslint": "~4.5.15",
     "@vue/cli-plugin-router": "~4.5.15",

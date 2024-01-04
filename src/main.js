@@ -4,6 +4,8 @@ import router from './router'
 import store from './store'
 
 import '@/components'
+import VueMarkdown from 'vue-markdown'
+Vue.component('Markdown', VueMarkdown)
 
 Vue.config.productionTip = false
 
