@@ -1,9 +1,9 @@
 <template>
 	<div class="demos">
 		<div class="menu">
-			<Markdown>[文字加粗不影响整体布局宽度](./demo-1)</Markdown>
-			<Markdown>[图片揭露动画](./demo-2)</Markdown>
-			<Markdown>[环形平移动画](./demo-3)</Markdown>
+			<RouterButton to="Demo1">文字加粗不影响整体布局宽度</RouterButton>
+			<RouterButton to="Demo2">图片揭露动画</RouterButton>
+			<RouterButton to="Demo3">环形平移动画</RouterButton>
 		</div>
 		<router-view />
 	</div>
