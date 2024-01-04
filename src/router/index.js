@@ -16,9 +16,19 @@ const routes = [
 		component: () => import('@/views/demos'),
 		children: [
 			{
-				path: 'english-font-weight',
-				name: 'EnglishFontWeight',
-				component: () => import('@/views/demos/EnglishFontWeight')
+				path: 'demo-1',
+				name: 'Demo1',
+				component: () => import('@/views/demos/Demo1')
+			},
+			{
+				path: 'demo-2',
+				name: 'Demo2',
+				component: () => import('@/views/demos/Demo2')
+			},
+			{
+				path: 'demo-3',
+				name: 'Demo3',
+				component: () => import('@/views/demos/Demo3')
 			}
 		]
 	},
