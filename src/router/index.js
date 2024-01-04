@@ -9,6 +9,24 @@ const routes = [
 		path: '/',
 		name: 'Home',
 		component: Home
+	},
+	{
+		path: '/demos',
+		name: 'Demos',
+		redirect: '/demos/english-font-weight',
+		component: () => import('@/views/demos'),
+		children: [
+			{
+				path: 'english-font-weight',
+				name: 'EnglishFontWeight',
+				component: () => import('@/views/demos/EnglishFontWeight')
+			}
+		]
+	},
+	{
+		path: '*',
+		name: 'NotFound',
+		component: () => import('@/views/error/NotFound')
 	}
 ]
 
