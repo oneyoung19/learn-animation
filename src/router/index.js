@@ -13,7 +13,6 @@ const routes = [
 	{
 		path: '/demos',
 		name: 'Demos',
-		redirect: '/demos/english-font-weight',
 		component: () => import('@/views/demos'),
 		children: [
 			{

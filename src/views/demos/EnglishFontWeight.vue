@@ -41,7 +41,7 @@ a {
 	}
 	&.font-weight-shadow {
 		&:hover {
-			text-shadow: 0 0 0.65px #3370ff;
+			text-shadow: 0 0 1px #3370ff;
 		}
 	}
 }
