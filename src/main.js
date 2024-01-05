@@ -3,6 +3,9 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+import '@/assets/styles/reset.less'
+import '@/assets/styles/global.less'
+
 import '@/components'
 import VueMarkdown from 'vue-markdown'
 Vue.component('Markdown', VueMarkdown)
