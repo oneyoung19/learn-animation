@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-import '@/assets/styles/reset.less'
+// import '@/assets/styles/reset.less'
 import '@/assets/styles/global.less'
 
 import ElementUI from 'element-ui'

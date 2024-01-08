@@ -1,17 +1,19 @@
 <template>
 	<div class="demos">
-		<div>
-			<RouterButton
-				type="primary"
-				to="Home">
-				首页
-			</RouterButton>
-			<RouterButton
-				v-show="$route.name !== 'Demos'"
-				type="primary"
-				to="Back">
-				上一页
-			</RouterButton>
+		<div class="menus">
+			<div class="navigation">
+				<RouterButton
+					type="primary"
+					to="Home">
+					首页
+				</RouterButton>
+				<RouterButton
+					v-show="$route.name !== 'Demos'"
+					type="primary"
+					to="Back">
+					上一页
+				</RouterButton>
+			</div>
 			<div
 				v-show="$route.name === 'Demos'"
 				class="menu">
@@ -27,5 +29,10 @@
 <style lang="less">
 .demos {
 	display: flex;
+	.menus {
+		.navigation {
+			width: 200px;
+		}
+	}
 }
 </style>
