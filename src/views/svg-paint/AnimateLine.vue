@@ -4,6 +4,7 @@
 			class="demo1"
 			width="300px">
 			<path
+				ref="path1"
 				fill="transparent"
 				stroke-width="5"
 				d="M10 80 Q77.5 10, 145 80 T280 80"
@@ -14,8 +15,9 @@
 			height="175px"
 			class="demo2">
 			<path
+				ref="path2"
 				fill="transparent"
-				stroke="#000000"
+				stroke="skyblue"
 				stroke-width="4"
 				d="M10 80 Q 77.5 10, 145 80 T 280 80"
 				class="path"></path>
@@ -27,7 +29,7 @@
 				class="line2"></path>
 			<path
 				fill="transparent"
-				stroke="#000000"
+				stroke="orange"
 				stroke-width="4"
 				d="M10 80 Q 77.5 10, 145 80 T 280 80"
 				class="line1"></path>
@@ -39,6 +41,13 @@
 export default {
 	data() {
 		return {}
+	},
+	mounted() {
+		const { path1, path2 } = this.$refs
+		console.log({
+			path1: path1.getTotalLength(),
+			path2: path2.getTotalLength()
+		})
 	},
 	methods: {}
 }
