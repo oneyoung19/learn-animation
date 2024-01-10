@@ -1,10 +1,7 @@
 <template>
 	<div class="home">
-		<el-link
-			type="primary"
-			@click="handleClick">
-			Demos
-		</el-link>
+		<RouterButton to="SvgPaint">Svg Paint</RouterButton>
+		<RouterButton to="Demos">Demos</RouterButton>
 	</div>
 </template>
 

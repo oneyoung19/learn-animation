@@ -11,6 +11,11 @@ const routes = [
 		component: Home
 	},
 	{
+		path: '/svg-paint',
+		name: 'SvgPaint',
+		component: () => import('@/views/svg-paint')
+	},
+	{
 		path: '/demos',
 		name: 'Demos',
 		component: () => import('@/views/demos'),
