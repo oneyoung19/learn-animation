@@ -71,7 +71,7 @@ export default {
 		border-radius: 50%;
 		offset-distance: 0%;
 
-		animation: move-ball 2s cubic-bezier(0.88, 0.05, 0.55, 0.5) infinite;
+		animation: move-ball 2s ease-in-out infinite;
 	}
 	@keyframes move-ball {
 		to {

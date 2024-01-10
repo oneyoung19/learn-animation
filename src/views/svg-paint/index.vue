@@ -2,8 +2,8 @@
 	<el-tabs
 		class="tabs"
 		tab-position="left">
-		<el-tab-pane label="Bezier">
-			<Bezier></Bezier>
+		<el-tab-pane label="AnimatePath">
+			<AnimatePath></AnimatePath>
 		</el-tab-pane>
 		<el-tab-pane label="B">B</el-tab-pane>
 		<el-tab-pane label="C">C</el-tab-pane>
@@ -12,11 +12,11 @@
 </template>
 
 <script>
-import Bezier from './Bezier'
+import AnimatePath from './AnimatePath'
 
 export default {
 	components: {
-		Bezier
+		AnimatePath
 	},
 	data() {
 		return {}
