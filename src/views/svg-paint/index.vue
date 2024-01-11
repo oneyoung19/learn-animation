@@ -14,6 +14,9 @@
 		<el-tab-pane label="SvgHandwriting">
 			<SvgHandwriting></SvgHandwriting>
 		</el-tab-pane>
+		<el-tab-pane label="SvgWps">
+			<SvgWps></SvgWps>
+		</el-tab-pane>
 	</el-tabs>
 </template>
 
@@ -22,13 +25,15 @@ import AnimateLine from './AnimateLine'
 import AnimatePath from './AnimatePath'
 import SvgHamburger from './SvgHamburger'
 import SvgHandwriting from './SvgHandwriting'
+import SvgWps from './SvgWps'
 
 export default {
 	components: {
 		AnimateLine,
 		AnimatePath,
 		SvgHamburger,
-		SvgHandwriting
+		SvgHandwriting,
+		SvgWps
 	},
 	data() {
 		return {}
