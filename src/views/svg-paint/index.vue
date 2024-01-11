@@ -11,7 +11,9 @@
 		<el-tab-pane label="SvgHamburger">
 			<SvgHamburger></SvgHamburger>
 		</el-tab-pane>
-		<el-tab-pane label="D">D</el-tab-pane>
+		<el-tab-pane label="SvgHandwriting">
+			<SvgHandwriting></SvgHandwriting>
+		</el-tab-pane>
 	</el-tabs>
 </template>
 
@@ -19,12 +21,14 @@
 import AnimateLine from './AnimateLine'
 import AnimatePath from './AnimatePath'
 import SvgHamburger from './SvgHamburger'
+import SvgHandwriting from './SvgHandwriting'
 
 export default {
 	components: {
 		AnimateLine,
 		AnimatePath,
-		SvgHamburger
+		SvgHamburger,
+		SvgHandwriting
 	},
 	data() {
 		return {}
