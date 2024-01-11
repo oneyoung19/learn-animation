@@ -26,13 +26,37 @@
 				stroke="#FF2851"
 				stroke-width="4"
 				d="M10 80 Q 77.5 10, 145 80 T 280 80"
-				class="line2"></path>
+				class="line1"></path>
 			<path
 				fill="transparent"
 				stroke="orange"
 				stroke-width="4"
 				d="M10 80 Q 77.5 10, 145 80 T 280 80"
+				class="line2"></path>
+		</svg>
+		<svg
+			width="300px"
+			height="175px"
+			class="demo3">
+			<!-- <path
+				ref="path3"
+				fill="transparent"
+				stroke="skyblue"
+				stroke-width="4"
+				d="M10 80 Q 77.5 10, 145 80 T 280 80"
+				class="path"></path> -->
+			<path
+				fill="transparent"
+				stroke="#FF2851"
+				stroke-width="4"
+				d="M10 80 Q 77.5 10, 145 80 T 280 80"
 				class="line1"></path>
+			<path
+				fill="transparent"
+				stroke="#fff"
+				stroke-width="5"
+				d="M10 80 Q 77.5 10, 145 80 T 280 80"
+				class="line2"></path>
 		</svg>
 	</div>
 </template>
@@ -72,16 +96,16 @@ export default {
 }
 .demo2 {
 	.line1 {
-		stroke-dasharray: 340;
-		stroke-dashoffset: 40;
+		stroke-dasharray: 320;
+		stroke-dashoffset: 320;
 		animation: dash1 1.5s linear alternate infinite;
 	}
 	.line2 {
-		stroke-dasharray: 320;
-		stroke-dashoffset: 320;
+		stroke-dasharray: 340;
+		stroke-dashoffset: 40;
 		animation: dash2 1.5s linear alternate infinite;
 	}
-	@keyframes dash1 {
+	@keyframes dash2 {
 		from {
 			stroke-dashoffset: 360;
 		}
@@ -89,12 +113,33 @@ export default {
 			stroke-dashoffset: 40;
 		}
 	}
-	@keyframes dash2 {
+	@keyframes dash1 {
 		from {
 			stroke-dashoffset: 280;
 		}
 		to {
 			stroke-dashoffset: -40;
+		}
+	}
+}
+.demo3 {
+	.line1 {
+		stroke-dasharray: 320;
+		stroke-dashoffset: 320;
+		animation: dash 1.5s ease-in-out infinite;
+	}
+	.line2 {
+		stroke-dasharray: 320;
+		stroke-dashoffset: 320;
+		animation: dash 1.5s ease-in-out infinite 0.3s;
+	}
+
+	@keyframes dash {
+		from {
+			stroke-dashoffset: 320;
+		}
+		to {
+			stroke-dashoffset: -320;
 		}
 	}
 }
