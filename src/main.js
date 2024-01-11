@@ -5,6 +5,7 @@ import store from './store'
 
 // import '@/assets/styles/reset.less'
 import '@/assets/styles/global.less'
+import '@/assets/icons'
 
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
