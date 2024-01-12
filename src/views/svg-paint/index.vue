@@ -17,6 +17,9 @@
 		<el-tab-pane label="SvgWps">
 			<SvgWps></SvgWps>
 		</el-tab-pane>
+		<el-tab-pane label="SvgHi">
+			<SvgHi></SvgHi>
+		</el-tab-pane>
 	</el-tabs>
 </template>
 
@@ -26,6 +29,7 @@ import AnimatePath from './AnimatePath'
 import SvgHamburger from './SvgHamburger'
 import SvgHandwriting from './SvgHandwriting'
 import SvgWps from './SvgWps'
+import SvgHi from './SvgHi'
 
 export default {
 	components: {
@@ -33,7 +37,8 @@ export default {
 		AnimatePath,
 		SvgHamburger,
 		SvgHandwriting,
-		SvgWps
+		SvgWps,
+		SvgHi
 	},
 	data() {
 		return {}

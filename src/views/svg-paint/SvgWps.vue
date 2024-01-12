@@ -118,28 +118,28 @@ export default {
 		let pathLen = $wpsLogoPath[0].getTotalLength()
 		console.log(pathLen)
 
-		document.addEventListener(
-			'webkitAnimationEnd',
-			function (e) {
-				if (e.animationName === 'wpsTextLogo') {
-					$('.wps-text-path').css({
-						stroke: '#fff',
-						fill: '#777'
-					})
-				}
-				if (e.animationName === 'wpsLogo') {
-					// $wpsLogoPath.css('stroke', 'transparent')
-					$wpsLogoPath.addClass('logo-fill')
-				}
-				if (e.animationName === 'wpsLogoFill') {
-					$wpsLogoPath.css({
-						animation: 'none',
-						fill: 'url("#wpslinear")'
-					})
-				}
-			},
-			false
-		)
+		// document.addEventListener(
+		// 	'webkitAnimationEnd',
+		// 	function (e) {
+		// 		if (e.animationName === 'wpsTextLogo') {
+		// 			$('.wps-text-path').css({
+		// 				stroke: '#fff',
+		// 				fill: '#777'
+		// 			})
+		// 		}
+		// 		if (e.animationName === 'wpsLogo') {
+		// 			// $wpsLogoPath.css('stroke', 'transparent')
+		// 			$wpsLogoPath.addClass('logo-fill')
+		// 		}
+		// 		if (e.animationName === 'wpsLogoFill') {
+		// 			$wpsLogoPath.css({
+		// 				animation: 'none',
+		// 				fill: 'url("#wpslinear")'
+		// 			})
+		// 		}
+		// 	},
+		// 	false
+		// )
 	},
 	methods: {}
 }
