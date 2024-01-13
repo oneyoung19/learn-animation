@@ -107,6 +107,7 @@ export default {
 	mounted() {
 		this.vivus = new Vivus(this.$refs.hi, {
 			type: 'scenario-sync',
+			// type: 'oneByOne',
 			duration: 20,
 			start: 'autostart',
 			dashGap: 20
