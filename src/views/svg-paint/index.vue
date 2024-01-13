@@ -23,6 +23,9 @@
 		<el-tab-pane label="SvgHi">
 			<SvgHi></SvgHi>
 		</el-tab-pane>
+		<el-tab-pane label="SvgPolaroid">
+			<SvgPolaroid></SvgPolaroid>
+		</el-tab-pane>
 	</el-tabs>
 </template>
 
@@ -34,6 +37,7 @@ import SvgHandwriting from './SvgHandwriting'
 import SvgWps from './SvgWps'
 import SvgPoorHi from './SvgPoorHi'
 import SvgHi from './SvgHi'
+import SvgPolaroid from './SvgPolaroid'
 
 export default {
 	components: {
@@ -43,7 +47,8 @@ export default {
 		SvgHandwriting,
 		SvgWps,
 		SvgPoorHi,
-		SvgHi
+		SvgHi,
+		SvgPolaroid
 	},
 	data() {
 		return {}
