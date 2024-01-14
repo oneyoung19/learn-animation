@@ -6,10 +6,11 @@
 				[https://juejin.cn/post/7246935481615925303](https://juejin.cn/post/7246935481615925303)
 			</Markdown>
 		</Quote>
-		<img
+		<!-- TODO: -->
+		<!-- <img
 			class="right"
 			src="http://localhost:3000/_nuxt/assets/image/corporbank/efficiency-bg.png"
-			alt="" />
+			alt="" /> -->
 	</div>
 </template>
 

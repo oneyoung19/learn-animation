@@ -7,16 +7,17 @@
 			</Markdown>
 		</Quote>
 		<div class="box">
-			<img
+			<!-- TODO -->
+			<!-- <img
 				class="avatar"
 				src="http://localhost:3000/_nuxt/assets/image/home/eur.png"
-				alt="" />
+				alt="" /> -->
 		</div>
 		<div class="box">
-			<img
+			<!-- <img
 				class="avatar2"
 				src="http://localhost:3000/_nuxt/assets/image/home/eur.png"
-				alt="" />
+				alt="" /> -->
 		</div>
 	</div>
 </template>
