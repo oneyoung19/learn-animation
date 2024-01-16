@@ -16,6 +16,19 @@ const routes = [
 		component: () => import('@/views/svg-paint')
 	},
 	{
+		path: '/gsap',
+		redirect: '/gsap/scroll',
+		name: 'Gsap',
+		component: () => import('@/views/gsap'),
+		children: [
+			{
+				path: 'scroll',
+				name: 'GsapScroll',
+				component: () => import('@/views/gsap/Scroll')
+			}
+		]
+	},
+	{
 		path: '/demos',
 		name: 'Demos',
 		component: () => import('@/views/demos'),
