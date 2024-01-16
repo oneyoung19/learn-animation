@@ -1,4 +1,8 @@
 module.exports = {
+	devServer: {
+		// 测试 gsap-trail
+		allowedHosts: ['learn.animation.com']
+	},
 	/* svg 相关配置 */
 	chainWebpack: config => {
 		const svgRule = config.module.rule('svg')
