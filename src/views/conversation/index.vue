@@ -17,5 +17,6 @@ export default {
 .conversation {
 	width: 350px;
 	height: 520px;
+	margin: 0 auto;
 }
 </style>

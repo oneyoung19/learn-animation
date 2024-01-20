@@ -24,6 +24,15 @@
 				</div>
 			</li>
 		</ul>
+		<div class="footer">
+			<textarea
+				ref="input"
+				class="input"
+				placeholder="Type your message..."></textarea>
+			<SvgIcon
+				name="aircraft"
+				class="icon"></SvgIcon>
+		</div>
 	</div>
 </template>
 
@@ -43,6 +52,13 @@ export default {
 			]
 		}
 	},
+	mounted() {
+		this.$refs.input.addEventListener('input', function () {
+			const { scrollHeight } = this
+			console.log(scrollHeight)
+			this.style.height = scrollHeight + 'px'
+		})
+	},
 	methods: {}
 }
 </script>
@@ -58,7 +74,7 @@ export default {
 	--coversation-color-answer: rgb(74, 74, 74);
 	--coversation-color-white: rgb(255, 255, 255);
 	--conversation-header-height: 56px;
-	--conversation-footer-height: 56px;
+	--conversation-footer-height: 48px;
 }
 </style>
 
@@ -69,7 +85,6 @@ export default {
 	width: 100%;
 	height: 100%;
 	margin: 0 auto;
-	// color: var(--coversation-theme);
 	font: var(--conversation-font);
 	background: var(--coversation-color-background);
 	border-radius: 10px;
@@ -89,10 +104,10 @@ export default {
 	}
 	.conversation-list {
 		width: 100%;
-		height: calc(
-			100% - var(--conversation-header-height) -
-				var(--conversation-footer-height)
-		);
+		// height: calc(
+		// 	100% - var(--conversation-header-height) -
+		// 		var(--conversation-footer-height)
+		// );
 		padding-top: 6px;
 		overflow-y: scroll;
 		.conversation-row {
@@ -148,6 +163,32 @@ export default {
 					}
 				}
 			}
+		}
+	}
+	.footer {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		background-color: var(--coversation-color-white);
+
+		overflow: hidden;
+		.input {
+			flex: 1;
+			box-sizing: border-box;
+			padding: 14px 16px;
+			height: var(--conversation-footer-height);
+			max-height: 200px;
+			border-width: 0;
+			appearance: none;
+			resize: none;
+			&::placeholder {
+				color: rgba(0, 0, 0, 0.5);
+			}
+		}
+		.icon {
+			font-size: 20px;
+			padding: 14px 16px;
+			cursor: pointer;
 		}
 	}
 }
