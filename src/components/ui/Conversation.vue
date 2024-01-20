@@ -123,12 +123,14 @@ export default {
 	methods: {
 		// 设置textarea相关高度
 		setTextareaSize() {
-			const { input } = this.$refs
-			const textareaCalcStyle = calcTextareaHeight(input)
-			const { height } = textareaCalcStyle
-			this.$refs.input.style.height = height
-			// 同时重新设置对话表高度
-			this.$refs.conversationWrapper.style.height = `calc(100% - var(--conversation-header-height) - ${height})`
+			this.$nextTick(() => {
+				const { input } = this.$refs
+				const textareaCalcStyle = calcTextareaHeight(input)
+				const { height } = textareaCalcStyle
+				this.$refs.input.style.height = height
+				// 同时重新设置对话表高度
+				this.$refs.conversationWrapper.style.height = `calc(100% - var(--conversation-header-height) - ${height})`
+			})
 		},
 		// 设置对话区域滚动
 		setScroll() {
@@ -233,6 +235,7 @@ export default {
 						max-width: 60%;
 						// margin: 0px 0px 10px;
 						overflow: hidden;
+						word-break: break-word;
 						// transform: scale(0);
 						// transform-origin: left bottom;
 					}
