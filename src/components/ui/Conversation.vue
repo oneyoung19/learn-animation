@@ -1,7 +1,9 @@
 <template>
 	<div class="conversation">
 		<div class="header">Speech Synthesis</div>
-		<ul class="conversation-list">
+		<ul
+			ref="conversationList"
+			class="conversation-list">
 			<li
 				v-for="(item, index) in conversationList"
 				:key="index"
@@ -24,7 +26,9 @@
 				</div>
 			</li>
 		</ul>
-		<div class="footer">
+		<div
+			ref="footer"
+			class="footer">
 			<textarea
 				ref="input"
 				v-model="inputText"
@@ -44,6 +48,38 @@ export default {
 	data() {
 		return {
 			conversationList: [
+				{
+					type: 'question',
+					text: 'Please type a number'
+				},
+				{
+					type: 'answer',
+					text: '123'
+				},
+				{
+					type: 'question',
+					text: 'Please type a number'
+				},
+				{
+					type: 'answer',
+					text: '123'
+				},
+				{
+					type: 'question',
+					text: 'Please type a number'
+				},
+				{
+					type: 'answer',
+					text: '123'
+				},
+				{
+					type: 'question',
+					text: 'Please type a number'
+				},
+				{
+					type: 'answer',
+					text: '123'
+				},
 				{
 					type: 'question',
 					text: 'Please type a number'
@@ -72,6 +108,8 @@ export default {
 			const textareaCalcStyle = calcTextareaHeight(input)
 			const { height } = textareaCalcStyle
 			this.$refs.input.style.height = height
+			// 同时重新设置对话表高度
+			this.$refs.conversationList.style.height = `calc(100% - var(--conversation-header-height) - ${height})`
 		}
 	}
 }
@@ -123,10 +161,10 @@ export default {
 	}
 	.conversation-list {
 		width: 100%;
-		// height: calc(
-		// 	100% - var(--conversation-header-height) -
-		// 		var(--conversation-footer-height)
-		// );
+		height: calc(
+			100% - var(--conversation-header-height) -
+				var(--conversation-footer-height)
+		);
 		padding-top: 6px;
 		overflow-y: scroll;
 		.conversation-row {
