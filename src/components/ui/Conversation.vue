@@ -16,16 +16,26 @@
 						class="conversation-item question">
 						<SvgIcon
 							name="avatar"
-							class="icon"></SvgIcon>
-						<div class="bubble">{{ item.text }}</div>
+							class="icon"
+							:class="item.animation ? 'animation' : ''"></SvgIcon>
+						<div
+							class="bubble"
+							:class="item.animation ? 'animation' : ''">
+							{{ item.text }}
+						</div>
 					</div>
 					<div
 						v-else
 						class="conversation-item answer">
-						<div class="bubble">{{ item.text }}</div>
+						<div
+							class="bubble"
+							:class="item.animation ? 'animation' : ''">
+							{{ item.text }}
+						</div>
 						<SvgIcon
 							name="robot"
-							class="icon"></SvgIcon>
+							class="icon"
+							:class="item.animation ? 'animation' : ''"></SvgIcon>
 					</div>
 				</li>
 			</ul>
@@ -37,7 +47,8 @@
 				ref="input"
 				v-model="inputText"
 				class="input"
-				placeholder="Type your message..."></textarea>
+				placeholder="Type your message..."
+				@keydown.ctrl.enter="handleSend"></textarea>
 			<SvgIcon
 				name="aircraft"
 				class="icon"
@@ -148,7 +159,8 @@ export default {
 			if (!this.sendAble) return
 			this.conversationList.push({
 				type: 'answer',
-				text: this.inputText
+				text: this.inputText,
+				animation: true
 			})
 			this.inputText = ''
 		}
@@ -215,40 +227,48 @@ export default {
 				.conversation-item {
 					display: flex;
 					align-items: flex-end;
+					@keyframes scale {
+						0% {
+							transform: scale(0);
+						}
+						100% {
+							transform: scale(1);
+						}
+					}
 					.icon {
 						font-size: 46px;
-						// animation: 0.3s ease 0s 1 normal forwards running Lmuha;
 						height: 40px;
 						min-width: 40px;
 						padding: 3px;
-						// transform: scale(0);
-						// transform-origin: right bottom;
 						box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 2px 0px;
+						&.animation {
+							animation: 0.3s ease 0s 1 normal forwards running scale;
+						}
 					}
 					.bubble {
 						position: relative;
 						padding: 12px;
-						// animation: 0.3s ease 0s 1 normal forwards running Lmuha;
 						box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 2px 0px;
-						// display: inline-block;
 						font-size: 14px;
 						max-width: 60%;
-						// margin: 0px 0px 10px;
 						overflow: hidden;
 						word-break: break-word;
-						// transform: scale(0);
-						// transform-origin: left bottom;
+						&.animation {
+							animation: 0.3s ease 0s 1 normal forwards running scale;
+						}
 					}
 					&.question {
 						justify-content: flex-start;
 						.icon {
 							margin-right: 6px;
 							border-radius: 50% 50% 0px;
+							transform-origin: right bottom;
 						}
 						.bubble {
 							background: var(--conversation-theme);
 							border-radius: 18px 18px 18px 0px;
 							color: var(--conversation-color-question);
+							transform-origin: left bottom;
 						}
 					}
 					&.answer {
@@ -256,11 +276,13 @@ export default {
 						.icon {
 							margin-left: 6px;
 							border-radius: 50% 50% 50% 0px;
+							transform-origin: left bottom;
 						}
 						.bubble {
 							background: var(--conversation-color-white);
 							border-radius: 18px 18px 0px;
 							color: var(--conversation-color-answer);
+							transform-origin: right bottom;
 						}
 					}
 				}
