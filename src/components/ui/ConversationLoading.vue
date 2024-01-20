@@ -41,6 +41,8 @@ export default {
 	justify-content: center;
 	align-items: center;
 	> span {
+		height: 12px;
+		line-height: 12px;
 		animation: loading 1.4s infinite both;
 	}
 }

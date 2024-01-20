@@ -21,7 +21,8 @@
 						<div
 							class="bubble"
 							:class="item.animation ? 'animation' : ''">
-							{{ item.text }}
+							<ConversationLoading v-if="item.loading"></ConversationLoading>
+							<span v-else>{{ item.text }}</span>
 						</div>
 					</div>
 					<div
@@ -30,7 +31,8 @@
 						<div
 							class="bubble"
 							:class="item.animation ? 'animation' : ''">
-							{{ item.text }}
+							<ConversationLoading v-if="item.loading"></ConversationLoading>
+							<span v-else>{{ item.text }}</span>
 						</div>
 						<SvgIcon
 							name="robot"
@@ -75,11 +77,13 @@ export default {
 				},
 				{
 					type: 'question',
-					text: 'Please type a number'
+					text: 'Please type a number',
+					loading: true
 				},
 				{
 					type: 'answer',
-					text: '123'
+					text: '123',
+					loading: true
 				},
 				{
 					type: 'question',
