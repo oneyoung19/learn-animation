@@ -4,7 +4,9 @@
 		<div
 			ref="conversationWrapper"
 			class="conversation-wrapper">
-			<ul class="conversation-list">
+			<ul
+				ref="conversationList"
+				class="conversation-list">
 				<li
 					v-for="(item, index) in conversationList"
 					:key="index"
@@ -106,12 +108,20 @@ export default {
 			handler(value) {
 				this.setTextareaSize()
 			}
+		},
+		// 监听对话数据变化
+		conversationList: {
+			handler(value) {
+				this.setScroll()
+			}
 		}
 	},
 	mounted() {
 		this.setTextareaSize()
+		this.setScroll()
 	},
 	methods: {
+		// 设置textarea相关高度
 		setTextareaSize() {
 			const { input } = this.$refs
 			const textareaCalcStyle = calcTextareaHeight(input)
@@ -120,12 +130,25 @@ export default {
 			// 同时重新设置对话表高度
 			this.$refs.conversationWrapper.style.height = `calc(100% - var(--conversation-header-height) - ${height})`
 		},
+		// 设置对话区域滚动
+		setScroll() {
+			this.$nextTick(() => {
+				const { scrollHeight } = this.$refs.conversationList
+				this.$refs.conversationWrapper.scrollTo({
+					top: scrollHeight,
+					left: 0,
+					behavior: 'smooth'
+				})
+			})
+		},
+		// 发送消息
 		handleSend() {
 			if (!this.sendAble) return
 			this.conversationList.push({
 				type: 'answer',
 				text: this.inputText
 			})
+			this.inputText = ''
 		}
 	}
 }
