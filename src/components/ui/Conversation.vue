@@ -38,7 +38,9 @@
 				placeholder="Type your message..."></textarea>
 			<SvgIcon
 				name="aircraft"
-				class="icon"></SvgIcon>
+				class="icon"
+				:class="sendAble ? 'active' : ''"
+				@click.native="handleSend"></SvgIcon>
 		</div>
 	</div>
 </template>
@@ -94,6 +96,11 @@ export default {
 			inputText: ''
 		}
 	},
+	computed: {
+		sendAble() {
+			return !!this.inputText
+		}
+	},
 	watch: {
 		inputText: {
 			handler(value) {
@@ -112,6 +119,13 @@ export default {
 			this.$refs.input.style.height = height
 			// 同时重新设置对话表高度
 			this.$refs.conversationWrapper.style.height = `calc(100% - var(--conversation-header-height) - ${height})`
+		},
+		handleSend() {
+			if (!this.sendAble) return
+			this.conversationList.push({
+				type: 'answer',
+				text: this.inputText
+			})
 		}
 	}
 }
@@ -254,7 +268,13 @@ export default {
 		.icon {
 			font-size: 20px;
 			padding: 14px 16px;
-			cursor: pointer;
+			color: #e5e5e5;
+			cursor: not-allowed;
+			transition: color 0.2s ease-in-out;
+			&.active {
+				color: var(--conversation-color-answer);
+				cursor: pointer;
+			}
 		}
 	}
 }
