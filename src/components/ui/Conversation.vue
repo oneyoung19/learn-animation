@@ -27,6 +27,7 @@
 		<div class="footer">
 			<textarea
 				ref="input"
+				v-model="inputText"
 				class="input"
 				placeholder="Type your message..."></textarea>
 			<SvgIcon
@@ -37,6 +38,8 @@
 </template>
 
 <script>
+import calcTextareaHeight from '@/utils/calcTextareaHeight'
+
 export default {
 	data() {
 		return {
@@ -49,32 +52,48 @@ export default {
 					type: 'answer',
 					text: '123'
 				}
-			]
+			],
+			inputText: ''
+		}
+	},
+	watch: {
+		inputText: {
+			handler(value) {
+				this.setTextareaSize()
+			}
 		}
 	},
 	mounted() {
-		this.$refs.input.addEventListener('input', function () {
-			const { scrollHeight } = this
-			console.log(scrollHeight)
-			this.style.height = scrollHeight + 'px'
-		})
+		this.setTextareaSize()
 	},
-	methods: {}
+	methods: {
+		setTextareaSize() {
+			const { input } = this.$refs
+			const textareaCalcStyle = calcTextareaHeight(input)
+			const { height } = textareaCalcStyle
+			this.$refs.input.style.height = height
+		}
+	}
 }
 </script>
 
 <style lang="less">
 :root {
-	--coversation-theme: rgb(110, 72, 170);
+	--conversation-theme: rgb(110, 72, 170);
 	// [font-style] [font-variant] [font-weight] [font-size]/[line-height] [font-family]
 	--conversation-font: 16px monospace;
-	--coversation-color-background: rgb(245, 248, 251);
-	--coversation-color-title: rgb(255, 255, 255);
-	--coversation-color-question: rgb(255, 255, 255);
-	--coversation-color-answer: rgb(74, 74, 74);
-	--coversation-color-white: rgb(255, 255, 255);
+	--conversation-color-background: rgb(245, 248, 251);
+	--conversation-color-title: rgb(255, 255, 255);
+	--conversation-color-question: rgb(255, 255, 255);
+	--conversation-color-answer: rgb(74, 74, 74);
+	--conversation-color-white: rgb(255, 255, 255);
 	--conversation-header-height: 56px;
 	--conversation-footer-height: 48px;
+}
+::-webkit-scrollbar {
+	display: none;
+	width: 0;
+	height: 0;
 }
 </style>
 
@@ -86,7 +105,7 @@ export default {
 	height: 100%;
 	margin: 0 auto;
 	font: var(--conversation-font);
-	background: var(--coversation-color-background);
+	background: var(--conversation-color-background);
 	border-radius: 10px;
 	box-shadow: rgba(0, 0, 0, 0.15) 0px 12px 24px 0px;
 	overflow: hidden;
@@ -97,8 +116,8 @@ export default {
 		justify-content: space-between;
 		align-items: center;
 		height: var(--conversation-header-height);
-		background: var(--coversation-theme);
-		color: var(--coversation-color-white);
+		background: var(--conversation-theme);
+		color: var(--conversation-color-white);
 		padding: 0px 10px;
 		font-weight: bold;
 	}
@@ -145,9 +164,9 @@ export default {
 						border-radius: 50% 50% 0px;
 					}
 					.bubble {
-						background: var(--coversation-theme);
+						background: var(--conversation-theme);
 						border-radius: 18px 18px 18px 0px;
-						color: var(--coversation-color-question);
+						color: var(--conversation-color-question);
 					}
 				}
 				&.answer {
@@ -157,20 +176,24 @@ export default {
 						border-radius: 50% 50% 50% 0px;
 					}
 					.bubble {
-						background: var(--coversation-color-white);
+						background: var(--conversation-color-white);
 						border-radius: 18px 18px 0px;
-						color: var(--coversation-color-answer);
+						color: var(--conversation-color-answer);
 					}
 				}
 			}
 		}
 	}
 	.footer {
+		position: absolute;
+		left: 0;
+		bottom: 0;
 		display: flex;
 		justify-content: space-between;
 		align-items: flex-end;
-		background-color: var(--coversation-color-white);
-
+		width: 100%;
+		height: auto;
+		background-color: var(--conversation-color-white);
 		overflow: hidden;
 		.input {
 			flex: 1;
