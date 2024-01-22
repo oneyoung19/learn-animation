@@ -69,26 +69,23 @@
 				<ul class="controls-list">
 					<li class="controls-item">
 						<SvgIcon
-							name="aircraft"
+							name="aigc"
 							class="icon"></SvgIcon>
 						<span class="text">AI生成</span>
 					</li>
 					<li class="controls-item">
 						<SvgIcon
-							name="aircraft"
+							name="train"
 							class="icon"></SvgIcon>
 						<span class="text">入库训练</span>
 					</li>
 					<li class="controls-item">
 						<SvgIcon
-							name="aircraft"
+							name="chat"
 							class="icon"></SvgIcon>
 						<span class="text">Chat</span>
 					</li>
 				</ul>
-				<!-- <button>AI生成</button>
-				<button>入库训练</button>
-				<button>Chat</button> -->
 			</div>
 			<div class="footer-form">
 				<ConversationTextarea
