@@ -18,7 +18,9 @@
 							<input
 								v-show="showCheckedBox"
 								type="checkbox"
-								class="checkbox" />
+								class="checkbox"
+								:value="item.text"
+								@change="event => handleCheck(event, item, index)" />
 							<SvgIcon
 								name="avatar"
 								class="icon"
@@ -48,7 +50,9 @@
 							<input
 								v-show="showCheckedBox"
 								type="checkbox"
-								class="checkbox" />
+								class="checkbox"
+								:value="item.text"
+								@change="event => handleCheck(event, item, index)" />
 						</div>
 					</div>
 				</li>
@@ -123,7 +127,8 @@ export default {
 				}
 			],
 			inputText: '',
-			showCheckedBox: false
+			showCheckedBox: true,
+			checkedConversationList: []
 		}
 	},
 	computed: {
@@ -180,6 +185,23 @@ export default {
 				animation: true
 			})
 			this.inputText = ''
+		},
+		// 选中消息
+		handleCheck(event, item, index) {
+			const { checked } = event.target
+			if (checked) {
+				this.checkedConversationList.push({
+					index,
+					...item
+				})
+			} else {
+				const checkedIndex = this.checkedConversationList.findIndex(
+					checkedItem => checkedItem.index === index
+				)
+				if (checkedIndex > -1) {
+					this.checkedConversationList.splice(checkedIndex, 1)
+				}
+			}
 		}
 	}
 }
