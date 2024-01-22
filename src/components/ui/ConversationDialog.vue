@@ -7,8 +7,28 @@
 			class="conversation-dialog"
 			@click.self="handleOverlayClick">
 			<div class="conversation-wrapper">
-				<div class="conversation-form question"></div>
-				<div class="conversation-form answer"></div>
+				<div class="conversation-form question">
+					<ConversationTextarea
+						:min-rows="5"
+						:max-rows="10"></ConversationTextarea>
+					<div class="conversation-form-footer">
+						<ConversationLoading></ConversationLoading>
+						<SvgIcon
+							name="AI"
+							class="icon"></SvgIcon>
+					</div>
+				</div>
+				<div class="conversation-form answer">
+					<ConversationTextarea
+						placeholder="Generated message"
+						:min-rows="5"
+						:max-rows="10"></ConversationTextarea>
+					<div class="conversation-form-footer">
+						<SvgIcon
+							name="aircraft"
+							class="icon"></SvgIcon>
+					</div>
+				</div>
 			</div>
 		</div>
 	</transition>
@@ -65,17 +85,36 @@ export default {
 		border-radius: 10px;
 		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 		.conversation-form {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
 			width: 100%;
 			height: 164px;
 			border-radius: 8px;
+			overflow: hidden;
 			+ .conversation-form {
 				margin-top: 15px;
 			}
 			&.question {
 				border: 1px solid rgba(0, 0, 0, 0.12);
+				.conversation-form-footer {
+					justify-content: space-between;
+				}
 			}
 			&.answer {
 				background-color: #f5f5f5;
+				.conversation-form-footer {
+					justify-content: flex-end;
+				}
+			}
+			.conversation-form-footer {
+				display: flex;
+				padding: 0 16px 10px;
+				color: var(--conversation-theme);
+				font-size: 18px;
+				> .icon {
+					cursor: pointer;
+				}
 			}
 		}
 	}

@@ -3,7 +3,7 @@
 		ref="textarea"
 		:value="value"
 		class="textarea"
-		placeholder="Type your message..."
+		:placeholder="placeholder"
 		@input="handleInput"></textarea>
 </template>
 
@@ -15,6 +15,10 @@ export default {
 		value: {
 			type: String,
 			default: ''
+		},
+		placeholder: {
+			type: String,
+			default: 'Type your message...'
 		},
 		minRows: {
 			type: Number,
@@ -69,6 +73,7 @@ export default {
 	padding: 14px 16px;
 	box-sizing: border-box;
 	border-width: 0;
+	background-color: transparent;
 	appearance: none;
 	resize: none;
 	&::placeholder {
