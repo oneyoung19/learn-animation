@@ -65,12 +65,12 @@
 		<div
 			ref="footer"
 			class="footer">
-			<textarea
-				ref="input"
-				v-model="inputText"
-				class="input"
+			<ConversationTextarea
+				v-model="textareaText"
+				class="textarea"
 				placeholder="Type your message..."
-				@keydown.ctrl.enter="handleSend"></textarea>
+				@size-change="handleTextareaSizeChange"
+				@keydown.native.ctrl.enter="handleSend"></ConversationTextarea>
 			<SvgIcon
 				name="aircraft"
 				class="icon"
@@ -86,8 +86,6 @@
 </template>
 
 <script>
-import calcTextareaHeight from '@/utils/calcTextareaHeight'
-
 export default {
 	data() {
 		return {
@@ -135,7 +133,7 @@ export default {
 					text: '123'
 				}
 			],
-			inputText: '',
+			textareaText: '',
 			// 多选
 			showCheckedBox: true,
 			checkedConversationList: [],
@@ -148,15 +146,10 @@ export default {
 	},
 	computed: {
 		sendAble() {
-			return !!this.inputText
+			return !!this.textareaText
 		}
 	},
 	watch: {
-		inputText: {
-			handler(value) {
-				this.setTextareaSize()
-			}
-		},
 		// 监听对话数据变化
 		conversationList: {
 			handler(value) {
@@ -165,21 +158,9 @@ export default {
 		}
 	},
 	mounted() {
-		this.setTextareaSize()
 		this.setScroll()
 	},
 	methods: {
-		// 设置textarea相关高度
-		setTextareaSize() {
-			this.$nextTick(() => {
-				const { input } = this.$refs
-				const textareaCalcStyle = calcTextareaHeight(input)
-				const { height } = textareaCalcStyle
-				this.$refs.input.style.height = height
-				// 同时重新设置对话表高度
-				this.$refs.conversationWrapper.style.height = `calc(100% - var(--conversation-header-height) - ${height})`
-			})
-		},
 		// 设置对话区域滚动
 		setScroll() {
 			this.$nextTick(() => {
@@ -191,15 +172,20 @@ export default {
 				})
 			})
 		},
+		// 根据textarea变化 重新设置对话表高度
+		handleTextareaSizeChange({ height }) {
+			this.$refs.conversationWrapper.style.height = `calc(100% - var(--conversation-header-height) - ${height})`
+			this.setScroll()
+		},
 		// 发送消息
 		handleSend() {
 			if (!this.sendAble) return
 			this.conversationList.push({
 				type: 'answer',
-				text: this.inputText,
+				text: this.textareaText,
 				animation: true
 			})
-			this.inputText = ''
+			this.textareaText = ''
 		},
 		// 唤起菜单
 		handleContextMenu(event) {
@@ -399,18 +385,8 @@ export default {
 		height: auto;
 		background-color: var(--conversation-color-white);
 		overflow: hidden;
-		.input {
+		.textarea {
 			flex: 1;
-			box-sizing: border-box;
-			padding: 14px 16px;
-			height: var(--conversation-footer-height);
-			max-height: 200px;
-			border-width: 0;
-			appearance: none;
-			resize: none;
-			&::placeholder {
-				color: rgba(0, 0, 0, 0.5);
-			}
 		}
 		.icon {
 			font-size: 20px;
