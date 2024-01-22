@@ -69,7 +69,7 @@ export default {
 .textarea {
 	display: inline-block;
 	width: 100%;
-	height: var(--conversation-footer-height);
+	height: 100%;
 	padding: 14px 16px;
 	box-sizing: border-box;
 	border-width: 0;

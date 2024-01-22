@@ -65,17 +65,46 @@
 		<div
 			ref="footer"
 			class="footer">
-			<ConversationTextarea
-				v-model="textareaText"
-				class="textarea"
-				placeholder="Type your message..."
-				@size-change="handleTextareaSizeChange"
-				@keydown.native.ctrl.enter="handleSend"></ConversationTextarea>
-			<SvgIcon
-				name="aircraft"
-				class="icon"
-				:class="sendAble ? 'active' : ''"
-				@click.native="handleSend"></SvgIcon>
+			<div class="footer-controls">
+				<ul class="controls-list">
+					<li class="controls-item">
+						<SvgIcon
+							name="aircraft"
+							class="icon"></SvgIcon>
+						<span class="text">AI生成</span>
+					</li>
+					<li class="controls-item">
+						<SvgIcon
+							name="aircraft"
+							class="icon"></SvgIcon>
+						<span class="text">入库训练</span>
+					</li>
+					<li class="controls-item">
+						<SvgIcon
+							name="aircraft"
+							class="icon"></SvgIcon>
+						<span class="text">Chat</span>
+					</li>
+				</ul>
+				<!-- <button>AI生成</button>
+				<button>入库训练</button>
+				<button>Chat</button> -->
+			</div>
+			<div class="footer-form">
+				<ConversationTextarea
+					v-model="textareaText"
+					class="textarea"
+					placeholder="Type your message..."
+					:min-rows="1"
+					:max-rows="8"
+					@size-change="handleTextareaSizeChange"
+					@keydown.native.ctrl.enter="handleSend"></ConversationTextarea>
+				<SvgIcon
+					name="aircraft"
+					class="icon"
+					:class="sendAble ? 'active' : ''"
+					@click.native="handleSend"></SvgIcon>
+			</div>
 		</div>
 		<ConversationContextmenu
 			v-model="contextmenuVisible"
@@ -174,7 +203,7 @@ export default {
 		},
 		// 根据textarea变化 重新设置对话表高度
 		handleTextareaSizeChange({ height }) {
-			this.$refs.conversationWrapper.style.height = `calc(100% - var(--conversation-header-height) - ${height})`
+			this.$refs.conversationWrapper.style.height = `calc(100% - var(--conversation-header-height) - var(--conversation-footer-controls-height) - ${height})`
 			this.setScroll()
 		},
 		// 发送消息
@@ -236,7 +265,8 @@ export default {
 
 <style lang="less">
 :root {
-	--conversation-theme: rgb(110, 72, 170);
+	// --conversation-theme: rgb(110, 72, 170);
+	--conversation-theme: #6f8aff;
 	// [font-style] [font-variant] [font-weight] [font-size]/[line-height] [font-family]
 	--conversation-font: 16px monospace;
 	--conversation-color-background: rgb(245, 248, 251);
@@ -244,8 +274,11 @@ export default {
 	--conversation-color-question: rgb(255, 255, 255);
 	--conversation-color-answer: rgb(74, 74, 74);
 	--conversation-color-white: rgb(255, 255, 255);
+	--conversation-color-inactived: #b5b6bd;
 	--conversation-header-height: 56px;
-	--conversation-footer-height: 48px;
+	--conversation-footer-controls-height: 35px;
+	--conversation-footer-form-height: 48px;
+	--conversation-border-color: #b5b6bd;
 }
 ::-webkit-scrollbar {
 	display: none;
@@ -282,7 +315,8 @@ export default {
 		width: 100%;
 		height: calc(
 			100% - var(--conversation-header-height) -
-				var(--conversation-footer-height)
+				var(--conversation-footer-controls-height) -
+				var(--conversation-footer-form-height)
 		);
 		overflow-y: scroll;
 		.conversation-list {
@@ -378,26 +412,67 @@ export default {
 		position: absolute;
 		left: 0;
 		bottom: 0;
-		display: flex;
-		justify-content: space-between;
-		align-items: flex-end;
 		width: 100%;
 		height: auto;
 		background-color: var(--conversation-color-white);
+		border-radius: 10px 10px 0 0;
+		box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.1);
 		overflow: hidden;
-		.textarea {
-			flex: 1;
-			padding-right: 0;
+		.footer-controls {
+			display: flex;
+			align-items: center;
+			width: 100%;
+			height: var(--conversation-footer-controls-height);
+			padding: 0 10px;
+			border-bottom: 1px solid var(--conversation-border-color);
+			.controls-list {
+				display: flex;
+				align-items: center;
+				.controls-item {
+					display: flex;
+					align-items: center;
+					min-height: 26px;
+					font-size: 14px;
+					border: 1px solid var(--conversation-border-color);
+					border-radius: 5px;
+					color: var(--conversation-border-color);
+					transition: all 0.2s ease-in-out;
+					cursor: pointer;
+					&:hover {
+						color: var(--conversation-color-answer);
+						border-color: var(--conversation-color-answer);
+					}
+					+ .controls-item {
+						margin-left: 5px;
+					}
+					> .icon {
+						padding: 2px 3px 2px 4px;
+					}
+					> .text {
+						padding: 2px 4px 2px 3px;
+					}
+				}
+			}
 		}
-		.icon {
-			font-size: 20px;
-			padding: 14px 16px;
-			color: #e5e5e5;
-			cursor: not-allowed;
-			transition: color 0.2s ease-in-out;
-			&.active {
-				color: var(--conversation-color-answer);
-				cursor: pointer;
+		.footer-form {
+			overflow: hidden;
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-end;
+			.textarea {
+				flex: 1;
+				padding-right: 0;
+			}
+			.icon {
+				font-size: 20px;
+				padding: 14px 16px;
+				color: var(--conversation-color-inactived);
+				cursor: not-allowed;
+				transition: color 0.2s ease-in-out;
+				&.active {
+					color: var(--conversation-color-answer);
+					cursor: pointer;
+				}
 			}
 		}
 	}
