@@ -2,7 +2,7 @@
 	<div
 		ref="conversation"
 		class="conversation">
-		<div class="header">Speech Synthesis</div>
+		<div class="header">Conversation</div>
 		<div
 			ref="conversationWrapper"
 			class="conversation-wrapper">
@@ -81,6 +81,7 @@
 			v-model="contextmenuVisible"
 			:position="contextmenuPosition"
 			@select="handleContextmenuSelect"></ConversationContextmenu>
+		<ConversationDialog v-model="dialogVisible"></ConversationDialog>
 	</div>
 </template>
 
@@ -135,10 +136,14 @@ export default {
 				}
 			],
 			inputText: '',
+			// 多选
 			showCheckedBox: true,
 			checkedConversationList: [],
+			// contextmenu
 			contextmenuVisible: false,
-			contextmenuPosition: {}
+			contextmenuPosition: {},
+			// dialog
+			dialogVisible: false
 		}
 	},
 	computed: {
@@ -211,15 +216,16 @@ export default {
 		},
 		// 选定contextmenu
 		handleContextmenuSelect(selectItem) {
-			// const { type } = selectItem
-			// if (type === 'SEND') {
-			// 	if (!this.checkedConversationList.length) return
-			// 	// 发送消息
-			// } else if (type === 'AI') {
-			// 	// 唤起AI对话框
-			// 	if (this.checkedConversationList.length) {
-			// 	} else {}
-			// }
+			const { type } = selectItem
+			if (type === 'SEND') {
+				if (!this.checkedConversationList.length) return
+				// 发送消息
+			} else if (type === 'AI') {
+				// 唤起AI对话框
+				this.dialogVisible = true
+				// if (this.checkedConversationList.length) {
+				// } else {}
+			}
 		},
 		// 消息多选
 		handleCheck(event, item, index) {
