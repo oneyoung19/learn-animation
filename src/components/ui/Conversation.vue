@@ -1,5 +1,7 @@
 <template>
-	<div class="conversation">
+	<div
+		ref="conversation"
+		class="conversation">
 		<div class="header">Speech Synthesis</div>
 		<div
 			ref="conversationWrapper"
@@ -28,7 +30,8 @@
 						</div>
 						<div
 							class="bubble"
-							:class="item.animation ? 'animation' : ''">
+							:class="item.animation ? 'animation' : ''"
+							@contextmenu="handleContextMenu">
 							<ConversationLoading v-if="item.loading"></ConversationLoading>
 							<span v-else>{{ item.text }}</span>
 						</div>
@@ -38,7 +41,8 @@
 						class="conversation-item answer">
 						<div
 							class="bubble"
-							:class="item.animation ? 'animation' : ''">
+							:class="item.animation ? 'animation' : ''"
+							@contextmenu="handleContextMenu">
 							<ConversationLoading v-if="item.loading"></ConversationLoading>
 							<span v-else>{{ item.text }}</span>
 						</div>
@@ -73,6 +77,10 @@
 				:class="sendAble ? 'active' : ''"
 				@click.native="handleSend"></SvgIcon>
 		</div>
+		<ConversationContextmenu
+			v-model="contextmenuVisible"
+			:position="contextmenuPosition"
+			@select="handleContextmenuSelect"></ConversationContextmenu>
 	</div>
 </template>
 
@@ -128,7 +136,9 @@ export default {
 			],
 			inputText: '',
 			showCheckedBox: true,
-			checkedConversationList: []
+			checkedConversationList: [],
+			contextmenuVisible: false,
+			contextmenuPosition: {}
 		}
 	},
 	computed: {
@@ -186,7 +196,32 @@ export default {
 			})
 			this.inputText = ''
 		},
-		// 选中消息
+		// 唤起菜单
+		handleContextMenu(event) {
+			event.preventDefault()
+			this.contextmenuVisible = true
+			// 视口尺寸 - 容器尺寸
+			const { clientX, clientY } = event
+			const { conversation } = this.$refs
+			const rect = conversation.getBoundingClientRect()
+			this.contextmenuPosition = {
+				top: `${clientY - rect.top}px`,
+				left: `${clientX - rect.left}px`
+			}
+		},
+		// 选定contextmenu
+		handleContextmenuSelect(selectItem) {
+			// const { type } = selectItem
+			// if (type === 'SEND') {
+			// 	if (!this.checkedConversationList.length) return
+			// 	// 发送消息
+			// } else if (type === 'AI') {
+			// 	// 唤起AI对话框
+			// 	if (this.checkedConversationList.length) {
+			// 	} else {}
+			// }
+		},
+		// 消息多选
 		handleCheck(event, item, index) {
 			const { checked } = event.target
 			if (checked) {
