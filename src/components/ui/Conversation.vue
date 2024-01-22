@@ -14,10 +14,16 @@
 					<div
 						v-if="item.type === 'question'"
 						class="conversation-item question">
-						<SvgIcon
-							name="avatar"
-							class="icon"
-							:class="item.animation ? 'animation' : ''"></SvgIcon>
+						<div class="conversation-form">
+							<input
+								v-show="showCheckedBox"
+								type="checkbox"
+								class="checkbox" />
+							<SvgIcon
+								name="avatar"
+								class="icon"
+								:class="item.animation ? 'animation' : ''"></SvgIcon>
+						</div>
 						<div
 							class="bubble"
 							:class="item.animation ? 'animation' : ''">
@@ -34,10 +40,16 @@
 							<ConversationLoading v-if="item.loading"></ConversationLoading>
 							<span v-else>{{ item.text }}</span>
 						</div>
-						<SvgIcon
-							name="robot"
-							class="icon"
-							:class="item.animation ? 'animation' : ''"></SvgIcon>
+						<div class="conversation-form">
+							<SvgIcon
+								name="robot"
+								class="icon"
+								:class="item.animation ? 'animation' : ''"></SvgIcon>
+							<input
+								v-show="showCheckedBox"
+								type="checkbox"
+								class="checkbox" />
+						</div>
 					</div>
 				</li>
 			</ul>
@@ -110,7 +122,8 @@ export default {
 					text: '123'
 				}
 			],
-			inputText: ''
+			inputText: '',
+			showCheckedBox: false
 		}
 	},
 	computed: {
@@ -225,7 +238,7 @@ export default {
 		overflow-y: scroll;
 		.conversation-list {
 			width: 100%;
-			padding-top: 6px;
+			padding: 6px;
 			.conversation-row {
 				margin-bottom: 10px;
 				.conversation-item {
@@ -239,14 +252,23 @@ export default {
 							transform: scale(1);
 						}
 					}
-					.icon {
-						font-size: 46px;
-						height: 40px;
-						min-width: 40px;
-						padding: 3px;
-						box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 2px 0px;
-						&.animation {
-							animation: 0.3s ease 0s 1 normal forwards running scale;
+					.conversation-form {
+						display: flex;
+						align-items: center;
+						.checkbox {
+							position: relative;
+							cursor: pointer;
+							// appearance: none;
+						}
+						.icon {
+							font-size: 46px;
+							height: 40px;
+							min-width: 40px;
+							padding: 3px;
+							box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 2px 0px;
+							&.animation {
+								animation: 0.3s ease 0s 1 normal forwards running scale;
+							}
 						}
 					}
 					.bubble {
@@ -263,10 +285,15 @@ export default {
 					}
 					&.question {
 						justify-content: flex-start;
-						.icon {
+						.conversation-form {
 							margin-right: 6px;
-							border-radius: 50% 50% 0px;
-							transform-origin: right bottom;
+							.checkbox {
+								margin-right: 6px;
+							}
+							.icon {
+								border-radius: 50% 50% 0px;
+								transform-origin: right bottom;
+							}
 						}
 						.bubble {
 							background: var(--conversation-theme);
@@ -277,10 +304,15 @@ export default {
 					}
 					&.answer {
 						justify-content: flex-end;
-						.icon {
+						.conversation-form {
 							margin-left: 6px;
-							border-radius: 50% 50% 50% 0px;
-							transform-origin: left bottom;
+							.checkbox {
+								margin-left: 6px;
+							}
+							.icon {
+								border-radius: 50% 50% 50% 0px;
+								transform-origin: left bottom;
+							}
 						}
 						.bubble {
 							background: var(--conversation-color-white);
