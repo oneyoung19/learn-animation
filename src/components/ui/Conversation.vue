@@ -387,6 +387,7 @@ export default {
 		overflow: hidden;
 		.textarea {
 			flex: 1;
+			padding-right: 0;
 		}
 		.icon {
 			font-size: 20px;

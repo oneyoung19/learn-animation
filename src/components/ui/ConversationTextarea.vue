@@ -15,6 +15,14 @@ export default {
 		value: {
 			type: String,
 			default: ''
+		},
+		minRows: {
+			type: Number,
+			default: 1
+		},
+		maxRows: {
+			type: Number,
+			default: 3
 		}
 	},
 	data() {
@@ -34,7 +42,11 @@ export default {
 		setTextareaSize() {
 			this.$nextTick(() => {
 				const { textarea } = this.$refs
-				const textareaCalcStyle = calcTextareaHeight(textarea)
+				const textareaCalcStyle = calcTextareaHeight(
+					textarea,
+					this.minRows,
+					this.maxRows
+				)
 				const { height } = textareaCalcStyle
 				this.$refs.textarea.style.height = height
 				this.$emit('size-change', {
@@ -51,10 +63,11 @@ export default {
 
 <style scoped lang="less">
 .textarea {
-	box-sizing: border-box;
-	padding: 14px 16px;
+	display: inline-block;
+	width: 100%;
 	height: var(--conversation-footer-height);
-	max-height: 200px;
+	padding: 14px 16px;
+	box-sizing: border-box;
 	border-width: 0;
 	appearance: none;
 	resize: none;
