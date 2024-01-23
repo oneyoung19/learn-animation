@@ -372,6 +372,7 @@ export default {
 							min-width: 40px;
 							padding: 3px;
 							box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 2px 0px;
+							color: var(--conversation-theme);
 							&.animation {
 								animation: 0.3s ease 0s 1 normal forwards running scale;
 							}
