@@ -79,7 +79,9 @@
 							class="icon"></SvgIcon>
 						<span class="text">入库训练</span>
 					</li>
-					<li class="controls-item">
+					<li
+						class="controls-item"
+						@click="dialogVisible = true">
 						<SvgIcon
 							name="chat"
 							class="icon"></SvgIcon>
