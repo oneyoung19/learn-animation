@@ -105,6 +105,8 @@
 </template>
 
 <script>
+import '@/components/common/toast/index.js'
+
 export default {
 	data() {
 		return {
@@ -248,7 +250,13 @@ export default {
 		handleMenuItemClick(item) {
 			const { id } = item
 			if (id === 'GENERATE') {
-				if (!this.checkedConversationList.length) return
+				if (!this.checkedConversationList.length) {
+					this.$toast({
+						appendToElement: this.$refs.conversation,
+						message: '请选择数据'
+					})
+					return
+				}
 				// 发送消息
 			} else if (id === 'CHAT') {
 				// 唤起AI对话框
