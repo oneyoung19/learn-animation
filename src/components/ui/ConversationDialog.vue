@@ -29,6 +29,7 @@
 						:max-rows="10"></ConversationTextarea>
 					<div class="conversation-form-footer">
 						<p
+							v-show="generatedMessage"
 							v-clipboard:copy="generatedMessage"
 							v-clipboard:success="handleCopySuccess"
 							v-clipboard:error="handleCopyError"

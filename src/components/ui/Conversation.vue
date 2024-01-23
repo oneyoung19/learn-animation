@@ -2,7 +2,10 @@
 	<div
 		ref="conversation"
 		class="conversation">
-		<div class="header">Conversation</div>
+		<div class="header">
+			<p class="title">Conversation</p>
+			<ConversationMenuIcon class="icon"></ConversationMenuIcon>
+		</div>
 		<div
 			ref="conversationWrapper"
 			class="conversation-wrapper">
@@ -336,6 +339,9 @@ export default {
 		color: var(--conversation-color-white);
 		padding: 0px 10px;
 		font-weight: bold;
+		> .icon {
+			font-size: 40px;
+		}
 	}
 	.conversation-wrapper {
 		width: 100%;
