@@ -4,7 +4,15 @@
 		class="conversation">
 		<div class="header">
 			<p class="title">Conversation</p>
-			<ConversationMenuIcon class="icon"></ConversationMenuIcon>
+			<VSwatches
+				v-model="themeColor"
+				show-fallback
+				fallback-input-type="color">
+				<ConversationMenuIcon
+					slot="trigger"
+					class="icon"
+					@toggle="handleMenuToggle"></ConversationMenuIcon>
+			</VSwatches>
 		</div>
 		<div
 			ref="conversationWrapper"
@@ -110,10 +118,18 @@
 <script>
 import Vue from 'vue'
 import toast from '@/components/common/toast/index.js'
+import VSwatches from 'vue-swatches'
+import 'vue-swatches/dist/vue-swatches.css'
 
 export default {
+	components: {
+		VSwatches
+	},
 	data() {
 		return {
+			// 主题
+			themeColor: '#6f8aff',
+			// 对话
 			conversationList: [
 				{
 					type: 'question',
@@ -200,6 +216,11 @@ export default {
 		}
 	},
 	watch: {
+		themeColor: {
+			handler(color) {
+				this.setTheme(color)
+			}
+		},
 		// 监听对话数据变化
 		conversationList: {
 			handler(value) {
@@ -211,9 +232,16 @@ export default {
 		Vue.use(toast, {
 			appendToElement: this.$refs.conversation
 		})
+		this.setTheme()
 		this.setScroll()
 	},
 	methods: {
+		setTheme(color) {
+			const root = document.documentElement
+			// 不能使用 root.style['--conversation-theme']
+			root.style.setProperty('--conversation-theme', color || this.themeColor)
+		},
+		handleMenuToggle() {},
 		// 设置对话区域滚动
 		setScroll() {
 			this.$nextTick(() => {
@@ -295,7 +323,7 @@ export default {
 <style lang="less">
 :root {
 	// --conversation-theme: rgb(110, 72, 170);
-	--conversation-theme: #6f8aff;
+	// --conversation-theme: #6f8aff;
 	// [font-style] [font-variant] [font-weight] [font-size]/[line-height] [font-family]
 	--conversation-font: 16px monospace;
 	--conversation-color-background: rgb(245, 248, 251);
@@ -339,7 +367,7 @@ export default {
 		color: var(--conversation-color-white);
 		padding: 0px 10px;
 		font-weight: bold;
-		> .icon {
+		.icon {
 			font-size: 40px;
 		}
 	}

@@ -1,7 +1,9 @@
 <template>
 	<svg
 		class="svg"
-		viewBox="0 0 100 100">
+		:class="clicked ? 'actived' : ''"
+		viewBox="0 0 100 100"
+		@click="handleToggleClick">
 		<path
 			ref="line1"
 			class="line line1"
@@ -20,17 +22,24 @@
 <script>
 export default {
 	data() {
-		return {}
+		return {
+			clicked: false
+		}
 	},
 	mounted() {
-		const { line1, line2, line3 } = this.$refs
-		console.log({
-			line1: line1.getTotalLength(),
-			line2: line2.getTotalLength(),
-			line3: line3.getTotalLength()
-		})
+		// const { line1, line2, line3 } = this.$refs
+		// console.log({
+		// 	line1: line1.getTotalLength(),
+		// 	line2: line2.getTotalLength(),
+		// 	line3: line3.getTotalLength()
+		// })
 	},
-	methods: {}
+	methods: {
+		handleToggleClick() {
+			// this.clicked = !this.clicked
+			this.$emit('toggle', this.clicked)
+		}
+	}
 }
 </script>
 
@@ -57,7 +66,7 @@ export default {
 			stroke-dashoffset: 0;
 		}
 	}
-	&:hover {
+	&.actived {
 		.line {
 			&.line1 {
 				stroke-dashoffset: -140;
