@@ -9,6 +9,7 @@
 			<div class="conversation-wrapper">
 				<div class="conversation-form question">
 					<ConversationTextarea
+						v-model="typedMessage"
 						:min-rows="5"
 						:max-rows="10"></ConversationTextarea>
 					<div class="conversation-form-footer">
@@ -22,11 +23,16 @@
 				</div>
 				<div class="conversation-form answer">
 					<ConversationTextarea
+						v-model="generatedMessage"
 						placeholder="Generated message"
 						:min-rows="5"
 						:max-rows="10"></ConversationTextarea>
 					<div class="conversation-form-footer">
-						<p title="copy">
+						<p
+							v-clipboard:copy="generatedMessage"
+							v-clipboard:success="handleCopySuccess"
+							v-clipboard:error="handleCopyError"
+							title="copy">
 							<SvgIcon
 								title="copy"
 								name="copy"
@@ -40,6 +46,10 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import VueClipboard from 'vue-clipboard2'
+Vue.use(VueClipboard)
+
 export default {
 	props: {
 		value: {
@@ -48,11 +58,20 @@ export default {
 		}
 	},
 	data() {
-		return {}
+		return {
+			typedMessage: '',
+			generatedMessage: ''
+		}
 	},
 	methods: {
 		handleOverlayClick() {
 			this.$emit('input', false)
+		},
+		handleCopySuccess() {
+			this.$toast('复制成功')
+		},
+		handleCopyError() {
+			this.$toast('复制失败')
 		}
 	}
 }
