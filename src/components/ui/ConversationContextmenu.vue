@@ -4,7 +4,7 @@
 		class="context-menu"
 		:style="position">
 		<li
-			v-for="(item, index) in contextMenus"
+			v-for="(item, index) in menus"
 			:key="index"
 			class="context-menu-item"
 			@click="handleSelect(item)">
@@ -20,6 +20,12 @@ export default {
 			type: Boolean,
 			default: false
 		},
+		menus: {
+			type: Array,
+			default() {
+				return []
+			}
+		},
 		position: {
 			type: Object,
 			default() {
@@ -31,26 +37,7 @@ export default {
 		}
 	},
 	data() {
-		return {
-			contextMenus: [
-				// {
-				// 	type: 'CHECKED_BOX',
-				// 	text: '多选'
-				// },
-				// {
-				// 	type: 'CHECKED_BOX_CANCEL',
-				// 	text: '取消多选'
-				// },
-				{
-					type: 'SEND',
-					text: '一键发送'
-				},
-				{
-					type: 'AI',
-					text: '对话AI'
-				}
-			]
-		}
+		return {}
 	},
 	mounted() {
 		document.addEventListener('click', () => {

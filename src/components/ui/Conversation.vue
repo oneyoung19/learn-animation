@@ -67,25 +67,15 @@
 			class="footer">
 			<div class="footer-controls">
 				<ul class="controls-list">
-					<li class="controls-item">
-						<SvgIcon
-							name="aigc"
-							class="icon"></SvgIcon>
-						<span class="text">AI生成</span>
-					</li>
-					<li class="controls-item">
-						<SvgIcon
-							name="train"
-							class="icon"></SvgIcon>
-						<span class="text">入库训练</span>
-					</li>
 					<li
+						v-for="item in menus"
+						:key="item.id"
 						class="controls-item"
-						@click="dialogVisible = true">
+						@click="handleMenuItemClick(item)">
 						<SvgIcon
-							name="chat"
+							:name="item.icon"
 							class="icon"></SvgIcon>
-						<span class="text">Chat</span>
+						<span class="text">{{ item.text }}</span>
 					</li>
 				</ul>
 			</div>
@@ -107,8 +97,9 @@
 		</div>
 		<ConversationContextmenu
 			v-model="contextmenuVisible"
+			:menus="menus"
 			:position="contextmenuPosition"
-			@select="handleContextmenuSelect"></ConversationContextmenu>
+			@select="handleMenuItemClick"></ConversationContextmenu>
 		<ConversationDialog v-model="dialogVisible"></ConversationDialog>
 	</div>
 </template>
@@ -166,6 +157,31 @@ export default {
 			showCheckedBox: true,
 			checkedConversationList: [],
 			// contextmenu
+			menus: [
+				// {
+				// 	id: 'CHECKED_BOX',
+				// 	text: '多选'
+				// },
+				// {
+				// 	id: 'CHECKED_BOX_CANCEL',
+				// 	text: '取消多选'
+				// },
+				{
+					id: 'GENERATE',
+					icon: 'aigc',
+					text: 'AI生成'
+				},
+				{
+					id: 'TRAIN',
+					icon: 'train',
+					text: '入库训练'
+				},
+				{
+					id: 'CHAT',
+					icon: 'chat',
+					text: 'Chat'
+				}
+			],
 			contextmenuVisible: false,
 			contextmenuPosition: {},
 			// dialog
@@ -229,12 +245,12 @@ export default {
 			}
 		},
 		// 选定contextmenu
-		handleContextmenuSelect(selectItem) {
-			const { type } = selectItem
-			if (type === 'SEND') {
+		handleMenuItemClick(item) {
+			const { id } = item
+			if (id === 'GENERATE') {
 				if (!this.checkedConversationList.length) return
 				// 发送消息
-			} else if (type === 'AI') {
+			} else if (id === 'CHAT') {
 				// 唤起AI对话框
 				this.dialogVisible = true
 				// if (this.checkedConversationList.length) {
@@ -427,6 +443,7 @@ export default {
 			.controls-list {
 				display: flex;
 				align-items: center;
+				flex-wrap: wrap;
 				.controls-item {
 					display: flex;
 					align-items: center;
