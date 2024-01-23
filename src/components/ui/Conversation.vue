@@ -6,6 +6,9 @@
 			<p class="title">Conversation</p>
 			<VSwatches
 				v-model="themeColor"
+				:swatches="swatches"
+				row-length="4"
+				swatch-size="38"
 				show-fallback
 				fallback-input-type="color">
 				<ConversationMenuIcon
@@ -129,6 +132,24 @@ export default {
 		return {
 			// 主题
 			themeColor: '#6f8aff',
+			swatches: [
+				'#C0382B',
+				'#E84B3C',
+				'#F39C19',
+				'#F2C511',
+				'#1CA085',
+				'#27B99C',
+				'#0C9D48',
+				'#27AF60',
+				'#4661DD',
+				'#6F8AFF',
+				'#A463BF',
+				'#8E43AD',
+				'#3D556E',
+				'#222F3D',
+				'#BDC3C8',
+				'#DDE6E8'
+			],
 			// 对话
 			conversationList: [
 				{
@@ -237,9 +258,14 @@ export default {
 	},
 	methods: {
 		setTheme(color) {
+			const themeColor =
+				color || window.localStorage.getItem('themeColor') || this.themeColor
+			this.themeColor = themeColor
 			const root = document.documentElement
 			// 不能使用 root.style['--conversation-theme']
-			root.style.setProperty('--conversation-theme', color || this.themeColor)
+			root.style.setProperty('--conversation-theme', themeColor)
+			// 持久化
+			window.localStorage.setItem('themeColor', themeColor)
 		},
 		handleMenuToggle() {},
 		// 设置对话区域滚动
@@ -322,9 +348,6 @@ export default {
 
 <style lang="less">
 :root {
-	// --conversation-theme: rgb(110, 72, 170);
-	// --conversation-theme: #6f8aff;
-	// [font-style] [font-variant] [font-weight] [font-size]/[line-height] [font-family]
 	--conversation-font: 16px monospace;
 	--conversation-color-background: rgb(245, 248, 251);
 	--conversation-color-title: rgb(255, 255, 255);
