@@ -105,7 +105,8 @@
 </template>
 
 <script>
-import '@/components/common/toast/index.js'
+import Vue from 'vue'
+import toast from '@/components/common/toast/index.js'
 
 export default {
 	data() {
@@ -204,6 +205,9 @@ export default {
 		}
 	},
 	mounted() {
+		Vue.use(toast, {
+			appendToElement: this.$refs.conversation
+		})
 		this.setScroll()
 	},
 	methods: {
@@ -252,7 +256,6 @@ export default {
 			if (id === 'GENERATE') {
 				if (!this.checkedConversationList.length) {
 					this.$toast({
-						appendToElement: this.$refs.conversation,
 						message: '请选择数据'
 					})
 					return

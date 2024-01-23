@@ -1,21 +1,11 @@
 import Vue from 'vue'
 import Toast from '@/components/common/toast/Toast'
 
-Vue.prototype.$toast = (options = {}) => {
-	generateInstance(options)
-}
-
 const ToastConstructor = Vue.extend(Toast)
 
 let zIndex = 9999
 
 function generateInstance(options) {
-	options =
-		typeof options === 'object'
-			? options
-			: {
-					message: String(options)
-			  }
 	const instance = new ToastConstructor({
 		propsData: options
 	})
@@ -46,4 +36,21 @@ function generateInstance(options) {
 	// 插入
 	mountTarget.appendChild(dom)
 	return instance
+}
+
+export default {
+	install(Vue, config) {
+		Vue.prototype.$toast = (options = {}) => {
+			options =
+				typeof options === 'object'
+					? options
+					: {
+							message: String(options)
+					  }
+			generateInstance({
+				...config,
+				...options
+			})
+		}
+	}
 }
