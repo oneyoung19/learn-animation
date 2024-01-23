@@ -13,9 +13,11 @@
 						:max-rows="10"></ConversationTextarea>
 					<div class="conversation-form-footer">
 						<ConversationLoading></ConversationLoading>
-						<SvgIcon
-							name="AI"
-							class="icon"></SvgIcon>
+						<p title="AIGC">
+							<SvgIcon
+								name="AI"
+								class="icon"></SvgIcon>
+						</p>
 					</div>
 				</div>
 				<div class="conversation-form answer">
@@ -24,9 +26,12 @@
 						:min-rows="5"
 						:max-rows="10"></ConversationTextarea>
 					<div class="conversation-form-footer">
-						<SvgIcon
-							name="aircraft"
-							class="icon"></SvgIcon>
+						<p title="copy">
+							<SvgIcon
+								title="copy"
+								name="copy"
+								class="icon"></SvgIcon>
+						</p>
 					</div>
 				</div>
 			</div>
@@ -112,7 +117,7 @@ export default {
 				padding: 0 16px 10px;
 				color: var(--conversation-theme);
 				font-size: 18px;
-				> .icon {
+				.icon {
 					cursor: pointer;
 				}
 			}
