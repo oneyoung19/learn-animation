@@ -101,7 +101,7 @@
 					:min-rows="1"
 					:max-rows="8"
 					@size-change="handleTextareaSizeChange"
-					@keydown.native.ctrl.enter="handleSend"></ConversationTextarea>
+					@keydown.native.ctrl.enter.exact="handleSend"></ConversationTextarea>
 				<SvgIcon
 					name="aircraft"
 					class="icon"
@@ -285,7 +285,8 @@ export default {
 			this.setScroll()
 		},
 		// 发送消息
-		handleSend() {
+		handleSend(event) {
+			event.preventDefault()
 			if (!this.sendAble) return
 			this.conversationList.push({
 				type: 'answer',
