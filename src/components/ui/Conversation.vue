@@ -7,6 +7,7 @@
 			<VSwatches
 				v-model="themeColor"
 				:swatches="swatches"
+				popover-x="left"
 				row-length="4"
 				swatch-size="38"
 				show-fallback
