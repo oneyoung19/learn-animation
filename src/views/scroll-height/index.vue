@@ -14,6 +14,15 @@ export default {
 		return {}
 	},
 	mounted() {
+		/*
+			参考：https://segmentfault.com/a/1190000016554851
+
+			clientHeight: content + padding
+			offsetHeight: content + padding + border (与css的box-sizing 无关)
+			scrollHeight: content(内部元素滚动 scrollHeight) + padding
+
+			谨记非常重要的一点，scrollHeight 不包含 border
+		*/
 		const { scrollHeight, clientHeight, offsetHeight } = this.$refs.container
 		console.log({
 			scrollHeight,
@@ -38,6 +47,7 @@ export default {
 	width: 1000px;
 	height: 2000px;
 	background-color: lightblue;
+	border: 10px solid red;
 	padding: 20px;
 	margin: 20px;
 }
