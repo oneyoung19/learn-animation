@@ -34,6 +34,11 @@ const routes = [
 		component: () => import('@/views/conversation')
 	},
 	{
+		path: '/scroll-height',
+		name: 'ScrollHeight',
+		component: () => import('@/views/scroll-height')
+	},
+	{
 		path: '/demos',
 		name: 'Demos',
 		component: () => import('@/views/demos'),
