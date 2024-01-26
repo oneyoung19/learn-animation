@@ -1,19 +1,39 @@
 <template>
 	<div class="home">
-		<RouterButton to="SvgPaint">Svg Paint</RouterButton>
-		<RouterButton to="Demos">Demos</RouterButton>
+		<RouterButton
+			v-for="item in routeList"
+			:key="item.name"
+			:to="item.name">
+			{{ item.text }}
+		</RouterButton>
 	</div>
 </template>
 
 <script>
 export default {
 	name: 'Home',
-	methods: {
-		handleClick() {
-			this.$router.push({
-				name: 'Demos'
-			})
+	data() {
+		return {
+			routeList: [
+				{
+					name: 'SvgPaint',
+					text: 'Svg Paint'
+				},
+				{
+					name: 'Demos',
+					text: 'Demos'
+				},
+				{
+					name: 'Conversation',
+					text: 'Conversation'
+				},
+				{
+					name: 'GsapScrollSmoother',
+					text: 'GsapScrollSmoother'
+				}
+			]
 		}
-	}
+	},
+	methods: {}
 }
 </script>

@@ -16,22 +16,22 @@ const routes = [
 		component: () => import('@/views/svg-paint')
 	},
 	{
+		path: '/conversation',
+		name: 'Conversation',
+		component: () => import('@/views/conversation')
+	},
+	{
 		path: '/gsap',
 		redirect: '/gsap/scroll',
 		name: 'Gsap',
 		component: () => import('@/views/gsap'),
 		children: [
 			{
-				path: 'scroll',
-				name: 'GsapScroll',
-				component: () => import('@/views/gsap/Scroll')
+				path: 'scroll-smoother',
+				name: 'GsapScrollSmoother',
+				component: () => import('@/views/gsap/ScrollSmoother')
 			}
 		]
-	},
-	{
-		path: '/conversation',
-		name: 'Conversation',
-		component: () => import('@/views/conversation')
 	},
 	{
 		path: '/scroll-height',
