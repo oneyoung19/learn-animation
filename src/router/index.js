@@ -22,7 +22,7 @@ const routes = [
 	},
 	{
 		path: '/gsap',
-		redirect: '/gsap/scroll',
+		redirect: '/gsap/scroll-smoother',
 		name: 'Gsap',
 		component: () => import('@/views/gsap'),
 		children: [
@@ -30,6 +30,11 @@ const routes = [
 				path: 'scroll-smoother',
 				name: 'GsapScrollSmoother',
 				component: () => import('@/views/gsap/ScrollSmoother')
+			},
+			{
+				path: 'scroll-trigger',
+				name: 'GsapScrollTrigger',
+				component: () => import('@/views/gsap/ScrollTrigger')
 			}
 		]
 	},
