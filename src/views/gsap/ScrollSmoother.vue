@@ -69,7 +69,7 @@ export default {
 }
 </script>
 
-<style scoped lang="less">
+<style lang="less">
 :root {
 	--dark: #1d1d1d;
 	--grey-dark: #414141;
@@ -94,7 +94,9 @@ body {
 	padding: 0;
 	overflow-x: hidden;
 }
+</style>
 
+<style scoped lang="less">
 .header {
 	display: flex;
 	justify-content: center;
