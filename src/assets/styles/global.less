@@ -1,42 +1,43 @@
 .layout {
-  width: 1200px;
-  height: 100%;
-  margin: 0 auto;
+	width: 1200px;
+	height: 100%;
+	margin: 0 auto;
 }
 
 .background {
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
 }
 
 body {
-  font-size: 14px;
-	font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+	font-size: 14px;
+	font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
+		'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	color: #2c3e50;
 }
 
 img {
-  display: block;
-  width: 100%;
-  height: 100%;
+	display: block;
+	width: 100%;
+	height: 100%;
 }
 
 /* 两行省略 */
 .text-overflow {
-  overflow : hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
 }
 
 /* 字体加粗 */
 .hover-bold {
-  &:hover {
-    // bold会造成英文字体宽度变大 宽度产生抖动 因此使用text-shadow属性代替
-    // font-weight: bold;
-    text-shadow: 0 0 1px #000;
-  }
+	&:hover {
+		// bold会造成英文字体宽度变大 宽度产生抖动 因此使用text-shadow属性代替
+		// font-weight: bold;
+		text-shadow: 0 0 1px #000;
+	}
 }

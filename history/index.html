@@ -1,33 +1,35 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-</head>
-<body>
-	<button id="A">A</button>
-	<button id="B">B</button>
-	<button id="history">history</button>
-<script>
-	const a = document.querySelector('#A')
-	const b = document.querySelector('#B')
-	const historyBtn = document.querySelector('#history')
-	a.addEventListener('click', () => {
-		history.pushState({}, '', '#A')
-	})
-	b.addEventListener('click', () => {
-		history.pushState({}, '', '#B')
-	})
-	historyBtn.addEventListener('click', () => {
-		// console.log(history)
-		// history.back()
-		// history.forward()
-		history.go(-1)
-	})
-	window.addEventListener('popstate', () => {
-		console.log('popstate')
-	})
-</script>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<button id="A">A</button>
+		<button id="B">B</button>
+		<button id="history">history</button>
+		<script>
+			const a = document.querySelector('#A')
+			const b = document.querySelector('#B')
+			const historyBtn = document.querySelector('#history')
+			a.addEventListener('click', () => {
+				history.pushState({}, '', '#A')
+			})
+			b.addEventListener('click', () => {
+				history.pushState({}, '', '#B')
+			})
+			historyBtn.addEventListener('click', () => {
+				// console.log(history)
+				// history.back()
+				// history.forward()
+				history.go(-1)
+			})
+			window.addEventListener('popstate', () => {
+				console.log('popstate')
+			})
+		</script>
+	</body>
 </html>
