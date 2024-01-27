@@ -1,34 +1,32 @@
 <template>
-	<div>
-		<div
-			id="smooth-wrapper"
-			ref="main">
-			<div id="smooth-content">
-				<header class="header">
-					<h1 class="title">GreenSock ScrollSmoother on a Vue3 App</h1>
-					<button
-						class="button"
-						@click="scrollTo">
-						Jump to C
-					</button>
-				</header>
-				<div
-					class="box box-a"
-					data-speed="0.5">
-					a
-				</div>
-				<div
-					class="box box-b"
-					data-speed="0.8">
-					b
-				</div>
-				<div
-					class="box box-c"
-					data-speed="1.5">
-					c
-				</div>
-				<div class="line"></div>
+	<div
+		id="smooth-wrapper"
+		ref="main">
+		<div id="smooth-content">
+			<header class="header">
+				<h1 class="title">GreenSock ScrollSmoother on a Vue3 App</h1>
+				<button
+					class="button"
+					@click="scrollTo">
+					Jump to C
+				</button>
+			</header>
+			<div
+				class="box box-a"
+				data-speed="0.5">
+				a
 			</div>
+			<div
+				class="box box-b"
+				data-speed="0.8">
+				b
+			</div>
+			<div
+				class="box box-c"
+				data-speed="1.5">
+				c
+			</div>
+			<div class="line"></div>
 		</div>
 	</div>
 </template>
@@ -86,7 +84,10 @@ export default {
 	--orange: #e77614;
 	accent-color: var(--green);
 }
-body {
+</style>
+
+<style scoped lang="less">
+#smooth-wrapper {
 	background-color: #111;
 	font-family: 'Signika Negative', sans-serif, Arial;
 	overscroll-behavior: none;
@@ -94,9 +95,6 @@ body {
 	padding: 0;
 	overflow-x: hidden;
 }
-</style>
-
-<style scoped lang="less">
 .header {
 	display: flex;
 	justify-content: center;
