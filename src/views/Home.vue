@@ -20,16 +20,24 @@ export default {
 					text: 'Svg Paint'
 				},
 				{
-					name: 'Demos',
-					text: 'Demos'
-				},
-				{
 					name: 'Conversation',
 					text: 'Conversation'
 				},
 				{
+					name: 'ScrollHeight',
+					text: 'ScrollHeight'
+				},
+				{
 					name: 'GsapScrollSmoother',
 					text: 'GsapScrollSmoother'
+				},
+				{
+					name: 'GsapScrollTrigger',
+					text: 'GsapScrollTrigger'
+				},
+				{
+					name: 'Demos',
+					text: 'Demos'
 				}
 			]
 		}

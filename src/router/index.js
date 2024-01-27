@@ -21,6 +21,11 @@ const routes = [
 		component: () => import('@/views/conversation')
 	},
 	{
+		path: '/scroll-height',
+		name: 'ScrollHeight',
+		component: () => import('@/views/scroll-height')
+	},
+	{
 		path: '/gsap',
 		redirect: '/gsap/scroll-smoother',
 		name: 'Gsap',
@@ -37,11 +42,6 @@ const routes = [
 				component: () => import('@/views/gsap/ScrollTrigger')
 			}
 		]
-	},
-	{
-		path: '/scroll-height',
-		name: 'ScrollHeight',
-		component: () => import('@/views/scroll-height')
 	},
 	{
 		path: '/demos',
