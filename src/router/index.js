@@ -26,6 +26,11 @@ const routes = [
 		component: () => import('@/views/scroll-height')
 	},
 	{
+		path: '/scroll-horizonal',
+		name: 'ScrollHorizonal',
+		component: () => import('@/views/scroll-horizonal')
+	},
+	{
 		path: '/gsap',
 		redirect: '/gsap/scroll-smoother',
 		name: 'Gsap',

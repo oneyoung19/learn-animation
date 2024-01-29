@@ -28,6 +28,10 @@ export default {
 					text: 'ScrollHeight'
 				},
 				{
+					name: 'ScrollHorizonal',
+					text: 'ScrollHorizonal'
+				},
+				{
 					name: 'GsapScrollSmoother',
 					text: 'GsapScrollSmoother'
 				},
