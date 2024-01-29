@@ -5314,6 +5314,11 @@ gsap-trial@^3.12.4:
   resolved "https://registry.npmmirror.com/gsap-trial/-/gsap-trial-3.12.4.tgz#ca090d572bd3e7f58eb70af0d25403f2ac794c12"
   integrity sha512-UIJ4JAHfYZBgMi0ap9EljNMuiNmmMdgo2VlUbMxyZ6VvcoSRIfyrnqOF+7BqcE4Ckt6uZ9wn4in4DraU7J5h9g==
 
+gsap@^3.12.5:
+  version "3.12.5"
+  resolved "https://r.cnpmjs.org/gsap/-/gsap-3.12.5.tgz#136c02dad4c673b441bdb1ca00104bfcb4eae7f4"
+  integrity sha512-srBfnk4n+Oe/ZnMIOXt3gT605BX9x5+rh/prT2F1SsNJsU1XuMiP0E2aptW481OnonOGACZWBqseH5Z7csHxhQ==
+
 gzip-size@^5.0.0:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/gzip-size/-/gzip-size-5.1.1.tgz#cb9bee692f87c0612b232840a873904e4c135274"
