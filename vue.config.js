@@ -21,12 +21,12 @@ module.exports = {
 			.set('assets', resolve('src/assets'))
 			.set('components', resolve('src/components'))
 
-		const svgRule = config.module.rule('svg')
-		// 清空默认svg规则
-		svgRule.uses.clear()
 		//针对svg文件添加svg-sprite-loader规则
-		svgRule
+		config.module
+			.rule('icons')
 			.test(/\.svg$/)
+			.include.add(resolve('src/assets/icons'))
+			.end()
 			.use('svg-sprite-loader')
 			.loader('svg-sprite-loader')
 			.options({
