@@ -7,16 +7,6 @@
 		<div class="massiveImage"></div>
 
 		<h1 class="header-section">Now we're back to regular scrolling</h1>
-
-		<header>
-			<a href="https://greensock.com/scrolltrigger">
-				<img
-					class="greensock-icon"
-					src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/scroll-trigger-logo-light.svg"
-					width="200"
-					height="64" />
-			</a>
-		</header>
 	</div>
 </template>
 
@@ -69,15 +59,5 @@ export default {
 	padding-bottom: 50vh;
 	margin-bottom: 0;
 	font-size: 2em;
-}
-header {
-	position: fixed;
-	top: 0px;
-	left: 0px;
-	border-bottom-right-radius: 26px;
-	z-index: 100;
-	background-color: rgba(0, 0, 0, 0.5);
-	will-change: transform;
-	padding: 6px 10px 10px;
 }
 </style>
