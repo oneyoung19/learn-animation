@@ -23,17 +23,16 @@ export default {
 	mounted() {
 		const cards = gsap.utils.toArray('.card-item')
 		gsap.to(cards, {
-			// xPercent: -100 * (cards.length - 1),
-			// x: -800 * (cards.length - 1),
-			x: -2400,
+			xPercent: -100 * cards.length,
+			x: () => innerWidth,
 			ease: 'none',
 			scrollTrigger: {
 				trigger: '.card-list',
 				pin: true,
-				scrub: 1
+				scrub: 1,
 				// snap: 1 / (cards.length - 1),
 				// base vertical scrolling on how wide the container is so it feels more natural.
-				// end: '+=5200'
+				end: '+=2400'
 			}
 		})
 	},
@@ -63,7 +62,7 @@ export default {
 			background-color: #3b7953;
 		}
 		&:nth-child(2) {
-			background-color: #b0da17;
+			background-color: #d38912;
 		}
 		&:nth-child(3) {
 			background-color: #aa3030;
