@@ -47,32 +47,7 @@ export default {
 	data() {
 		return {}
 	},
-	mounted() {
-		// const container = document.querySelector('.scrollbox_container')
-		let sections = gsap.utils.toArray('.scrollbox_container_card')
-
-		gsap.to(sections, {
-			// xPercent: -100 * (sections.length - 1),
-			// xPercent: -100 * sections.length,
-			xPercent: -100,
-			// x: -3360,
-			// x: () => innerWidth,
-			ease: 'none',
-			scrollTrigger: {
-				trigger: '.scrollbox_container',
-				pin: true,
-				// x: () => innerWidth,
-				scrub: 1,
-				// snap: 1 / (sections.length - 1),
-				// base vertical scrolling on how wide the container is so it feels more natural.
-				// end: '+=3000',
-				// end: '+=929',
-				// end: () => innerWidth * 3,
-				invalidateOnRefresh: true,
-				anticipatePin: 1
-			}
-		})
-	},
+	mounted() {},
 	methods: {}
 }
 </script>
@@ -119,8 +94,10 @@ div {
 
 .scrollbox_container_card {
 	position: relative;
-	width: 65rem;
-	height: 40rem;
+	// width: 65rem;
+	// height: 40rem;
+	width: 1040px;
+	height: 640px;
 	background-color: #f7f7f7;
 	border-radius: 5rem;
 	margin-left: 5rem;
