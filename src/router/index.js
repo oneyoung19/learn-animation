@@ -57,6 +57,11 @@ const routes = [
 				component: () => import('@/views/gsap/ScrollTriggerHorizonal')
 			},
 			{
+				path: 'scroll-trigger-navigation',
+				name: 'GsapScrollTriggerNavigation',
+				component: () => import('@/views/gsap/ScrollTriggerNavigation')
+			},
+			{
 				path: 'scroll-trigger-snap',
 				name: 'GsapScrollTriggerSnap',
 				component: () => import('@/views/gsap/ScrollTriggerSnap')
