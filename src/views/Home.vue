@@ -40,6 +40,14 @@ export default {
 					text: 'GsapScrollTrigger'
 				},
 				{
+					name: 'GsapScrollTriggerHorizonal',
+					text: 'GsapScrollTriggerHorizonal'
+				},
+				{
+					name: 'GsapScrollTriggerSnap',
+					text: 'GsapScrollTriggerSnap'
+				},
+				{
 					name: 'Demos',
 					text: 'Demos'
 				}
