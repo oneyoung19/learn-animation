@@ -588,7 +588,6 @@ body {
 	margin: 0;
 	height: 100%;
 	-webkit-overflow-scrolling: touch;
-	overflow-scrolling: touch;
 	font-family: 'Signika Negative', sans-serif, Arial;
 }
 
