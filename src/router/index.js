@@ -31,6 +31,19 @@ const routes = [
 		component: () => import('@/views/scroll-horizonal')
 	},
 	{
+		path: '/base-css',
+		name: 'BaseCss',
+		component: () => import('@/views/base-css'),
+		redirect: '/base-css/bg-blur',
+		children: [
+			{
+				path: 'bg-blur',
+				name: 'BaseCssBackgroundBlur',
+				component: () => import('@/views/base-css/BackgroundBlur')
+			}
+		]
+	},
+	{
 		path: '/gsap',
 		redirect: '/gsap/scroll-smoother',
 		name: 'Gsap',
