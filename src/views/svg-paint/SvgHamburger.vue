@@ -2,9 +2,11 @@
 	<div>
 		<svg
 			class="svg"
+			:class="active ? 'active' : ''"
 			width="100"
 			height="100"
-			viewBox="0 0 100 100">
+			viewBox="0 0 100 100"
+			@click="active = !active">
 			<path
 				ref="line1"
 				class="line line1"
@@ -24,7 +26,9 @@
 <script>
 export default {
 	data() {
-		return {}
+		return {
+			active: false
+		}
 	},
 	mounted() {
 		const { line1, line2, line3 } = this.$refs
@@ -44,7 +48,7 @@ export default {
 	.line {
 		fill: none;
 		stroke: black;
-		stroke-width: 6;
+		stroke-width: 4;
 		transition: all 0.8s ease-in-out;
 		&.line1 {
 			stroke-dasharray: 60 147;
@@ -59,7 +63,7 @@ export default {
 			stroke-dashoffset: 0;
 		}
 	}
-	&:hover {
+	&.active {
 		.line {
 			&.line1 {
 				stroke-dashoffset: -140;
