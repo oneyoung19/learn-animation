@@ -9,7 +9,8 @@
     "format": "npm run format:lint && npm run format:pretty",
     "format:lint": "vue-cli-service format:lint",
     "format:pretty": "prettier . --write",
-    "start": "vue-cli-service serve"
+    "start": "vue-cli-service serve",
+    "element": "babel ./element-ui-import/index.js --out-dir ./element-ui-import/lib"
   },
   "dependencies": {
     "babel-runtime": "^6.26.0",
@@ -27,6 +28,7 @@
     "vuex": "^3.4.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.24.7",
     "@cbibank/vue-cli-plugin-format": "~1.1.0",
     "@vue/cli-plugin-babel": "~4.5.15",
     "@vue/cli-plugin-eslint": "~4.5.15",
@@ -35,6 +37,7 @@
     "@vue/cli-service": "~4.5.15",
     "@vue/eslint-config-standard": "^5.1.2",
     "babel-eslint": "^10.1.0",
+    "babel-plugin-component": "^1.1.1",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.20.2",
